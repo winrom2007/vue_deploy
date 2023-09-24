@@ -70,11 +70,11 @@ export default new Vuex.Store({
         cartTotalPrice(state, getters) {
             return getters.cartDetailProduct.reduce((acc, item) => (item.product.price * item.amount) + acc, 0)
         },
-        orderInfoData(state) {
-            return state.orderInfo ? state.orderInfo : {};
+        orderInfoData(state){
+            return state.orderInfo ? state.orderInfo:{};
         },
-        orderCartProductsData(state) {
-            return state.cartProductsData ? state.cartProductsData : {};
+        orderCartProductsData(state){
+            return state.cartProductsData ? state.cartProductsData:{};
         },
     },
 
@@ -86,7 +86,7 @@ export default new Vuex.Store({
                         userAccessKey: context.state.userAccessKey
                     }
                 }).then(response => {
-                    context.commit('updateOrderInfo', response.data);
+                    context.commit('updateOrderInfo',response.data);
                 })
         },
         loadCart(context) {

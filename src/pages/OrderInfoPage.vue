@@ -1,5 +1,5 @@
-<template v-if="order && order.basket.items">
-  <main class="content container">
+<template>
+  <main class="content container" v-if="order">
     <div class="content__top">
       <ul class="breadcrumbs">
         <li class="breadcrumbs__item">
@@ -49,9 +49,9 @@
           </ul> 
         </div>
 
-        <div class="cart__block">
+        <div class="cart__block" v-if="order">
            <ul class="cart__orders" >
-            <li class="cart__order" v-for="item in order.basket.items" :key="order.basket.items.id">
+            <li class="cart__order" v-for="item in order.basket.items">
               <h3>{{item.product.title}}</h3>
               <b>{{ item.price * item.quantity }} ₽</b>
               <span>Артикул: {{item.product.id}}</span>
@@ -60,7 +60,7 @@
 
           <div class="cart__total">
             <p>Доставка: <b>500 ₽</b></p>
-            <p>Итого: <b>{{order.basket.items.length}}</b> товара на сумму <b>{{order.totalPrice}} ₽</b></p> 
+            <p >Итого: <b>{{order.basket.items.length}}</b> товара на сумму <b>{{order.totalPrice}} ₽</b></p> 
           </div>
         </div>
       </form>
